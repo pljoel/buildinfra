@@ -1,6 +1,6 @@
 variable "vsphere_server" {
   type = "string"
-  description = "vSphere FQDN or IP "
+  description = "vSphere FQDN or IP"
 }
 variable "vsphere_user" {
   type = "string"
@@ -43,7 +43,7 @@ variable "vm_name" {
 }
 variable "vm_admin_pass" {
   type = "string"
-  description = "Windows dministrator password"
+  description = "Windows administrator password"
 }
 variable "vm_folder" {
   type = "string"
@@ -51,7 +51,7 @@ variable "vm_folder" {
 }
 variable "vm_cpu" {
   type = "string"
-  description = "Number of VM CPUs"
+  description = "Number of vCPUs"
   default = "2"
 }
 variable "vm_memory" {

@@ -3,20 +3,54 @@
    connection: local
    hosts: 127.0.0.1
    gather_facts: no
+   vars_prompt:
+    - name: "vsphere_server"
+      prompt: "vSphere FQDN or IP"
+    - name: "vsphere_user"
+      prompt: "vSphere user"
+    - name: "vsphere_pass"
+      prompt: "vSphere password"
+      private: yes
+    - name: "vsphere_datacenter"
+      prompt: "vSphere datacenter to create the plan to"
+    - name: "vsphere_datastore"
+      prompt: "vSphere datastore to create the plan to"
+    - name: "vsphere_pool"
+      prompt: |
+        vSphere resource pool.
+          If you don't have a cluster, it's going to be your ESXi host with /Resources/
+          Eg: 192.168.0.10/Resources
+    - name: "vsphere_network"
+      prompt: "Name of the network"
+      default: "VM Network"
+    - name: "vsphere_template"
+      prompt: "Name of the VM template to create from"
+    - name: "vm_name"
+      prompt: "Name of the VM to create"
+    - name: "vm_admin_pass"
+      prompt: "Windows administrator password"
+    - name: "vm_folder"
+      prompt: "The path to the folder to put this virtual machine in, relative to the datacenter that the resource pool is in"
+    - name: "vm_cpu"
+      prompt: "Number of vCPUs"
+      default: 2
+    - name: "vm_memory"
+      prompt: "RAM (in MB)"
+      default: 4096
    tasks:
     - terraform:
         project_path: "{{ playbook_dir }}"
         variables:
-          vsphere_server: "192.168.0.11"
-          vsphere_user: "administrator@vsphere.local"
+          vsphere_server: "{{ vsphere_server }}"
+          vsphere_user: "{{ vsphere_user }}"
           vsphere_pass: "{{ vsphere_pass }}"
-          vsphere_datacenter: "Homelab"
-          vsphere_datastore: "SSHD-2TB"
-          vsphere_pool: "192.168.0.10/Resources"
-          vsphere_network: "VM Network"
-          vsphere_template: "WS2019"
-          vm_name: "win19"
-          vm_admin_pass: "fakepass123"
-          vm_folder: "ansible-test"
-          vm_cpu: "2"
-          vm_memory: "4096"
+          vsphere_datacenter: "{{ vsphere_datacenter }}"
+          vsphere_datastore: "{{ vsphere_datastore }}"
+          vsphere_pool: "{{ vsphere_pool }}"
+          vsphere_network: "{{ vsphere_network }}"
+          vsphere_template: "{{ vsphere_template }}"
+          vm_name: "{{ vm_name }}"
+          vm_admin_pass: "{{ vm_admin_pass }}"
+          vm_folder: "{{ vm_folder }}"
+          vm_cpu: "{{ vm_cpu }}"
+          vm_memory: "{{ vm_memory }}"
