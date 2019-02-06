@@ -9,7 +9,7 @@
         variables:
           vsphere_server: "192.168.0.11"
           vsphere_user: "administrator@vsphere.local"
-          vsphere_pass: "fakepass123"
+          vsphere_pass: "{{ vsphere_pass }}"
           vsphere_datacenter: "Homelab"
           vsphere_datastore: "SSHD-2TB"
           vsphere_pool: "192.168.0.10/Resources"
