@@ -1,4 +1,4 @@
-variable "vsphere_server_host" {
+variable "vsphere_server" {
   type = "string"
   description = "vSphere FQDN or IP "
 }
