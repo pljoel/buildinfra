@@ -5,4 +5,4 @@
    gather_facts: no
    tasks:
     - terraform:
-        project_path: {{ playbook_dir }}
+        project_path: "{{ playbook_dir }}"
