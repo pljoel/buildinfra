@@ -1,0 +1,8 @@
+---
+ - name: Testing terraform module
+   connection: local
+   hosts: 127.0.0.1
+   gather_facts: no
+   tasks:
+    - terraform:
+        project_path: '/home/ansible/terraform/WS2019/dc'
